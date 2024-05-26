@@ -3,10 +3,15 @@
 Food Finder is a web application that helps users discover and locate different types of food. This project is built with modern JavaScript tools and libraries, leveraging the power of React and Vite for development and build processes.
 
 ## Table of Contents
+- [Demo](#demo)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Dependencies](#dependencies)
 - [Dev Dependencies](#dev-dependencies)
+
+## Demo
+
+Check out the live demo [here](https://antonsavchenko94.github.io/).
 
 ## Installation
 
