@@ -49,6 +49,7 @@ function App() {
                         facilitytype={item.facilitytype}
                         fooditems={item.fooditems}
                         latitude={item.latitude}
+                        locationdescription={item.locationdescription}
                         longitude={item.longitude}
                         query={searchText}
                         objectid={item.objectid}
