@@ -1,5 +1,6 @@
 import React from 'react';
 import './LoadMoreButton.css';
+import PropTypes from "prop-types";
 
 export const LoadMoreButton = ({ onClick, disabled }) => {
     return (
@@ -8,3 +9,8 @@ export const LoadMoreButton = ({ onClick, disabled }) => {
         </div>
     );
 };
+
+LoadMoreButton.propTypes = {
+    onClick: PropTypes.func,
+    disabled: PropTypes.bool,
+}

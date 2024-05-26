@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useMemo, useRef} from 'react';
+import React from 'react';
 import PropTypes from "prop-types";
 import {Highlighter} from "./Highlighter.jsx";
 import './TruckCard.css';

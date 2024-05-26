@@ -1,5 +1,6 @@
 import React from 'react';
 import './Highlighter.css';
+import PropTypes from "prop-types";
 
 export const Highlighter = ({ mainString, subString }) => {
     const highlightSimilarSubstrings = () => {
@@ -19,4 +20,9 @@ export const Highlighter = ({ mainString, subString }) => {
             {highlightSimilarSubstrings()}
         </div>
     );
+}
+
+Highlighter.propTypes = {
+    mainString: PropTypes.string,
+    subString: PropTypes.string,
 }

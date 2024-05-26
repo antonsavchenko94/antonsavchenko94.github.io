@@ -1,5 +1,6 @@
 import React, {useEffect, useState, memo} from 'react';
 import './SearchForm.css';
+import PropTypes from "prop-types";
 
 export const SearchForm = memo(({ onSubmit }) => {
     const [query, setQuery] = useState('');
@@ -37,3 +38,7 @@ export const SearchForm = memo(({ onSubmit }) => {
 })
 
 SearchForm.displayName = 'SearchForm';
+
+SearchForm.propTypes = {
+    onSubmit: PropTypes.func,
+}
