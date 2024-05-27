@@ -1,4 +1,4 @@
-import React, {useEffect, useState, memo} from 'react';
+import React, {useState, memo} from 'react';
 import './SearchForm.css';
 import PropTypes from "prop-types";
 
@@ -13,10 +13,6 @@ export const SearchForm = memo(({ onSubmit }) => {
         event.preventDefault();
         onSubmit(query);
     };
-
-    useEffect(() => {
-        console.info('Form Rendered')
-    });
 
     return (
         <div className="search-container">
