@@ -17,16 +17,15 @@ export const SearchForm = memo(({ onSubmit }) => {
     return (
         <div className="search-container">
             <form className="search-form" onSubmit={handleSubmit}>
-                <label>
-                    Search:
-                    <input
-                        className="search-input"
-                        type="text"
-                        value={query}
-                        onChange={handleInputChange}
-                        placeholder="What would you like to eat?"
-                    />
-                </label>
+                <label htmlFor="search-input">Search:</label>
+                <input
+                    id="search-input"
+                    className="search-input"
+                    type="text"
+                    value={query}
+                    onChange={handleInputChange}
+                    placeholder="What would you like to eat?"
+                />
                 <button type="submit" className="search-button">Search</button>
             </form>
         </div>
