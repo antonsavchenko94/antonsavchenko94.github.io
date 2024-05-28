@@ -47,6 +47,7 @@ export const useLoadData = () => {
     const handleQueryChange = useCallback((query) => {
         setQuery(query.trim());
         setCurrentLimit(INITIAL_LIMIT);
+        setSearchResults([]);
     }, []);
 
     return {
