@@ -1,24 +1,19 @@
-import React, {useCallback, lazy} from 'react';
+import React from 'react';
 import {SearchForm} from "./SearchForm.jsx";
 import {TruckCard} from "./TruckCard.jsx";
 import {useLoadData} from "../hooks/useLoadData.js";
 
-const INITIAL_LIMIT = 15;
-const DATA_ENDPOINT = 'https://data.sfgov.org/resource/rqzj-sfat.json'
-
 export const MainView = () => {
     const {
-        setSearchText,
-        searchResults,
-        searchText,
+        query,
         bottomRef,
+        searchResults,
+        handleQueryChange
     } = useLoadData();
-
-    const handleFormSubmit = useCallback(text => setSearchText(text.trim()), []);
 
     return (
         <div>
-            <SearchForm onSubmit={handleFormSubmit}/>
+            <SearchForm onSubmit={handleQueryChange}/>
             <div className="results-container">
                 {searchResults.map((item) =>
                     <TruckCard
@@ -29,7 +24,7 @@ export const MainView = () => {
                         latitude={item.latitude}
                         locationdescription={item.locationdescription}
                         longitude={item.longitude}
-                        query={searchText}
+                        query={query}
                         objectid={item.objectid}
                     />)}
             </div>

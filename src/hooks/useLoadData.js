@@ -4,35 +4,33 @@ import useInfiniteScroll from "react-infinite-scroll-hook";
 const INITIAL_LIMIT = 20;
 const DATA_ENDPOINT = 'https://data.sfgov.org/resource/rqzj-sfat.json'
 
+const fetchData = async (query, limit) => {
+    const url = `${DATA_ENDPOINT}?status=APPROVED&$limit=${limit}&$q=${encodeURIComponent(query)}`;
+    const res = await fetch(url);
+    if (!res.ok) {
+        throw new Error('Network response was not ok ' + res.statusText);
+    }
+    return res.json();
+}
+
 
 export const useLoadData = () => {
     const [searchResults, setSearchResults] = useState([]);
     const [currentLimit, setCurrentLimit] = useState(INITIAL_LIMIT);
     const [loading, setLoading] = useState(false);
-    const [searchText, setSearchText] = useState('');
-
-    const requestData = () => {
-        if (searchText !== '') {
-            setLoading(true);
-
-            const url = `${DATA_ENDPOINT}?status=APPROVED&$limit=${currentLimit}&$q=${encodeURIComponent(searchText)}`;
-            fetch(url)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok ' + response.statusText);
-                    }
-                    return response.json();
-                })
-                .then((data) => {
-                    setSearchResults(data);
-                    setLoading(false);
-                });
-        }
-    }
+    const [query, setQuery] = useState('');
 
     useEffect(() => {
+        const requestData = async () => {
+            if (query !== '') {
+                setLoading(true);
+                const data = await fetchData(query, currentLimit);
+                setSearchResults(data);
+                setLoading(false);
+            }
+        }
         requestData();
-    }, [searchText, currentLimit]);
+    }, [query, currentLimit]);
 
     const handleLoadMore = useCallback(() => {
         setCurrentLimit((prevState) => prevState + INITIAL_LIMIT)
@@ -46,10 +44,15 @@ export const useLoadData = () => {
         rootMargin: '0px 0px 400px 0px',
     });
 
+    const handleQueryChange = useCallback((query) => {
+        setQuery(query.trim());
+        setCurrentLimit(INITIAL_LIMIT);
+    }, []);
+
     return {
-        setSearchText,
-        searchResults,
-        searchText,
+        query,
         bottomRef,
+        searchResults,
+        handleQueryChange
     }
 }
