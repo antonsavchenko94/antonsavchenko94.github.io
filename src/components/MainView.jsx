@@ -14,21 +14,8 @@ export const MainView = () => {
     return (
         <div>
             <SearchForm onSubmit={handleQueryChange}/>
-            <div className="results-container">
-                {searchResults.map((item) =>
-                    <TruckCard
-                        key={item.objectid}
-                        applicant={item.applicant}
-                        facilitytype={item.facilitytype}
-                        fooditems={item.fooditems}
-                        latitude={item.latitude}
-                        locationdescription={item.locationdescription}
-                        longitude={item.longitude}
-                        query={query}
-                        objectid={item.objectid}
-                    />)}
-            </div>
-            <div ref={bottomRef} />
+            <TruckList list={searchResults} query={query}/>
+            <div ref={bottomRef}/>
         </div>
     );
 };

@@ -43,5 +43,5 @@ TruckCard.propTypes = {
     query: PropTypes.string,
     latitude: PropTypes.string,
     longitude: PropTypes.string,
-    objectid: PropTypes.number,
+    objectid: PropTypes.string,
 }

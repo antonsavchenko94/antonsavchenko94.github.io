@@ -1,0 +1,22 @@
+.results-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.status-container {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 16px;
+    margin: 8px;
+    text-align: center;
+    background-color: #f9f9f9;
+    color: #333;
+    width: 100%;
+    max-width: 600px;
+}
+
+.status {
+    margin: 0;
+    font-size: 16px;
+}
