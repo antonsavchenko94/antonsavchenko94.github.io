@@ -5,12 +5,16 @@ const INITIAL_LIMIT = 20;
 const DATA_ENDPOINT = 'https://data.sfgov.org/resource/rqzj-sfat.json'
 
 const fetchData = async (query, limit) => {
-    const url = `${DATA_ENDPOINT}?status=APPROVED&$limit=${limit}&$q=${encodeURIComponent(query)}`;
-    const res = await fetch(url);
-    if (!res.ok) {
-        throw new Error('Network response was not ok ' + res.statusText);
+    try {
+        const url = `${DATA_ENDPOINT}?status=APPROVED&$limit=${limit}&$q=${encodeURIComponent(query)}`;
+        const res = await fetch(url);
+        if (!res.ok) {
+            throw new Error('Network response was not ok ' + res.statusText);
+        }
+        return res.json();
+    } catch (e) {
+        console.info('Something went wrong');
     }
-    return res.json();
 }
 
 
@@ -54,6 +58,7 @@ export const useLoadData = () => {
         query,
         bottomRef,
         searchResults,
-        handleQueryChange
+        handleQueryChange,
+        loading,
     }
 }

@@ -4,8 +4,8 @@ import {TruckCard} from "./TruckCard.jsx";
 import {useStatusMessage} from "../hooks/useStatusMessage.js";
 import './TruckList.css';
 
-export const TruckList = ({ list, query }) => {
-    const message = useStatusMessage(list, query);
+export const TruckList = ({ list, query, loading }) => {
+    const message = useStatusMessage(list, query, loading);
     return (
         <div className="results-container">
             {message && (
@@ -30,6 +30,7 @@ export const TruckList = ({ list, query }) => {
 };
 
 TruckList.propTypes = {
+    loading: PropTypes.bool,
     query: PropTypes.string,
     list: PropTypes.arrayOf(PropTypes.shape({
         applicant: PropTypes.string,

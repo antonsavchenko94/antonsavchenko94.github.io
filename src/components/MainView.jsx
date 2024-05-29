@@ -1,6 +1,6 @@
 import React from 'react';
 import {SearchForm} from "./SearchForm.jsx";
-import {TruckCard} from "./TruckCard.jsx";
+import {TruckList} from "./TruckList.jsx";
 import {useLoadData} from "../hooks/useLoadData.js";
 
 export const MainView = () => {
@@ -8,13 +8,14 @@ export const MainView = () => {
         query,
         bottomRef,
         searchResults,
-        handleQueryChange
+        handleQueryChange,
+        loading,
     } = useLoadData();
 
     return (
         <div>
             <SearchForm onSubmit={handleQueryChange}/>
-            <TruckList list={searchResults} query={query}/>
+            <TruckList list={searchResults} query={query} loading={loading}/>
             <div ref={bottomRef}/>
         </div>
     );
