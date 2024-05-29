@@ -4,6 +4,7 @@ Food Finder is a web application that helps users discover and locate different 
 
 ## Table of Contents
 - [Demo](#demo)
+- [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Dependencies](#dependencies)
@@ -12,6 +13,14 @@ Food Finder is a web application that helps users discover and locate different 
 ## Demo
 
 Check out the live demo [here](https://antonsavchenko94.github.io/).
+
+## Requirements
+
+You should provide `VITE_GOOGLE_MAP_API_KEY` in .env file. It's needed for correct displaying of Map  
+
+```bash
+VITE_GOOGLE_MAP_API_KEY = 'Your Google Maps API Key'
+```
 
 ## Installation
 
